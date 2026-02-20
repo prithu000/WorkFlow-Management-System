@@ -38,3 +38,29 @@ The system provides role-based authentication and enables managers to assign tas
 ---
 
 ## 🗃 Project Structure
+workflow-management-system/
+│
+├── app/
+│ ├── init.py
+│ ├── models.py
+│ ├── routes.py
+│ └── services/
+│ └── mail_services.py
+│
+├── templates/
+│ ├── base.html
+│ ├── index.html
+│ ├── admin_dashboard.html
+│ ├── employee_dashboard.html
+│ ├── manager_dashboard.html
+│ └── ...
+│
+├── static/
+│ └── css/
+│ └── style.css
+│
+├── config.py
+├── extensions.py
+├── run.py
+├── requirements.txt
+└── README.md
