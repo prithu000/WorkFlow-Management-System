@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %} View All - Company Employee Portal {% endblock %}
+
+{% block content %}
+<div class="admin-dashboard">
+
+    <h1>All Users</h1>
+
+    <!-- Employees Section -->
+    <h2 class="section-title">Employees</h2>
+    <div class="user-grid">
+        {% for employee in employees %}
+        <div class="user-card">
+            <div class="user-id">ID: {{ employee.id }}</div>
+            <div class="user-name">Name: {{ employee.name }}</div>
+            <div class="user-role">Role: Employee</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Managers Section -->
+    <h2 class="section-title">Managers</h2>
+    <div class="user-grid">
+        {% for manager in managers %}
+        <div class="user-card">
+            <div class="user-id">ID: {{ manager.id }}</div>
+            <div class="user-name">Name: {{ manager.name }}</div>
+            <div class="user-role">Role: Manager</div>
+            <div class="user-dept">Dept: {{ manager.department }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

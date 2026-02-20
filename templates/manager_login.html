@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} Manager Login - Company Employee Portal {% endblock %}
+
+{% block content %}
+<div class="login-container">
+    
+    <h2>Manager Login</h2>
+
+    <form method="POST" action="{{ url_for('main.manager_login') }}">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="name" placeholder="Manager Name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Manager Password" required>
+        </div>
+
+        <button type="submit" class="btn-login">Login</button>
+    </form>
+
+</div>
+{% endblock %}

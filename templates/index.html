@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Company Employee Portal{% endblock %}
+
+{% block content %}
+<h1 class="title">Company Employee Portal</h1>
+<p class="subtitle">Please select your role to continue</p>
+
+<div class="cards">
+    <a href="{{ url_for('main.admin_login') }}" class="card">
+        <div class="icon">🛠️</div>
+        <div class="role">Admin Portal</div>
+        <div class="desc">Manage employees, managers and tasks</div>
+        <span class="btn">Login as Admin</span>
+    </a>
+
+    <a href="{{ url_for('main.employee_login') }}" class="card">
+        <div class="icon">👨‍💼</div>
+        <div class="role">Employee Portal</div>
+        <div class="desc">View tasks and update progress</div>
+        <span class="btn">Login as Employee</span>
+    </a>
+
+    <a href="{{ url_for('main.manager_login') }}" class="card">
+        <div class="icon">📊</div>
+        <div class="role">Manager Portal</div>
+        <div class="desc">Assign and monitor tasks</div>
+        <span class="btn">Login as Manager</span>
+    </a>
+</div>
+{% endblock %}

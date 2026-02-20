@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Employee Dashboard{% endblock %}
+
+{% block content %}
+<div class="employee-dashboard">
+
+<h1 class="title">Welcome, {{ employee.name }}</h1>
+
+<h2 class="section-title">My Tasks</h2>
+
+{% if tasks %}
+<div class="task-list">
+    {% for task in tasks %}
+    <div class="task-card {{ task.status }}">
+        <div class="task-title">{{ task.title }}</div>
+        <div class="task-status">Status: {{ task.status }}</div>
+
+        {% if task.status == "Pending" %}
+        <form action="{{ url_for('main.task_done', id=task.id) }}" method="POST">
+            <button class="btn">Mark as Done</button>
+        </form>
+        {% else %}
+        <span class="done-label">Completed</span>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No tasks assigned yet.</p>
+{% endif %}
+
+</div>
+{% endblock %}

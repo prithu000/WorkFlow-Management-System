@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Manager Dashboard{% endblock %}
+
+{% block content %}
+<h1 class="title">Manager Dashboard</h1>
+
+<div class="dashboard-card task-form-card">
+    <form method="POST" action="{{ url_for('main.add_task') }}">
+        <div class="form-group">
+            <label>Task Title</label>
+            <input type="text" name="title" required>
+
+            <label>Select Employee</label>
+            <select name="employee_id" required>
+                {% for emp in employees %}
+                <option value="{{ emp.id }}">{{ emp.name }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="btn">Assign Task</button>
+        </div>
+    </form>
+</div>
+
+<h2 class="section-title">All Tasks</h2>
+
+{% if tasks %}
+<div class="task-list">
+{% for task in tasks %}
+<div class="task-card {{ task.status }}">
+    <div class="task-title">{{ task.title }}</div>
+    <div class="task-status">
+        Employee: {{ task.employee.name }} <br>
+        Status: {{ task.status }}
+    </div>
+</div>
+{% endfor %}
+</div>
+{% else %}
+<p>No tasks available.</p>
+{% endif %}
+{% endblock %}

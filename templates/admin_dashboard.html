@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %} 
+<div class="admin-dashboard" style ="text-align: center;">
+    <h1 class = "title">Admin Dashboard</h1>
+
+    <div class="dashboard-cards">
+
+        <a href="{{ url_for('main.manage_employees') }}" class="dashboard-card">
+            <div class="icon">👥</div>
+            <div class="role">Manage Employees</div>
+            <div class="desc">Add, remove or update employee details</div>
+            <span class="btn">Go to Employee Management</span>
+        </a>
+
+        <a href="{{ url_for('main.manage_managers') }}" class="dashboard-card">
+            <div class="icon">🧑‍💼</div>
+            <div class="role">Manage Managers</div>
+            <div class="desc">Add, remove or update manager details</div>
+            <span class="btn">Go to Manager Management</span>
+        </a>
+
+        <a href="{{ url_for('main.view_detail') }}" class="dashboard-card">
+            <div class="icon">📋</div>
+            <div class="role">View All</div>
+            <div class="desc">Fetch all employees and managers</div>
+            <span class="btn">Go For Details</span>
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}
+

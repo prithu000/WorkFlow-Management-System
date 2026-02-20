@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title%} Admin Login - Company Employee Portal{% endblock %}
+{% block content %}
+ <div class="login-container">
+    
+    <h2>Admin Login</h2>
+     <form method="POST" action="{{ url_for('main.admin_login') }}">
+        <div class="form-group">
+            <label for="username">USERNAME:</label>
+            <input type="text" id="username" name="username" placeholder = "admin" required>
+            </div>
+        <div class="form-group">
+            <label for="password">PASSWORD:</label>
+            <input type="password" id="password" name="password" placeholder="1234" required>
+            </div>
+        <button type="submit" class="btn-login">Login</button>
+        </form>
+        </div>
+{% endblock %}

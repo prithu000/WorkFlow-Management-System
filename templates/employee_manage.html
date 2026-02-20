@@ -1,0 +1,68 @@
+{% extends "base.html"%}
+{% block title %} Employee Management - Company Employee Portal {% endblock %}
+
+{% block content %}
+<div class="admin-dashboard">
+
+    <h1 class = "title" style="text-align: center;">Employee Management</h1>
+
+    <div class="dashboard-cards">
+
+        <!-- Add Employee Card -->
+        <div class="dashboard-card">
+            <div class="role">Add Employee</div>
+            
+
+            <form method="POST" action = "{{ url_for('main.add_employee') }}"> 
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="employee_name" placeholder="Employee Name" required>
+
+                    <label>Password</label>
+                    <input type="password" name="employee_password" placeholder="Employee Password" required>
+                     
+                    <label>Email</label>
+                    <input type ="email" name = "emp_email" placeholder="Enter Employee Email" required>
+
+                    <button type="submit" class="btn">Add</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Remove Employee Card -->
+        <div class="dashboard-card">
+            <div class="role">Remove Employee</div>
+            {% for employee in employees %}
+
+            <form method="POST" action="{{ url_for('main.del_emp', id=employee.id)}}">
+                {% endfor %}
+                <div class="form-group">
+                    <label>Employee ID</label>
+                    <input type="text" name="employee_id" placeholder="Employee ID" required>
+
+                    <button type="submit" class="btn">Remove</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<hr class="divider">
+<br>
+<br>
+<div class="role">
+<h2 style = "text-align: center;
+text-decoration: dashed;">EXISTING EMPLOYEES</h2> </div>
+{% for employee in employees %}
+
+<div class="employee">
+    <div class="employee-info">
+        <div class="employee-id">ID: {{ employee.id }}</div>
+        <div class="employee-name">Name: {{ employee.name }}</div>
+
+    </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
