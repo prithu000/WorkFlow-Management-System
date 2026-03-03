@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block title%} Admin Login - Company Employee Portal{% endblock %}
 {% block content %}
+{% if error %}
+    <p style="color: red; font-family: 'Gill Sans';transition: ease-in-out;">{{ error }}</p>
+{% endif %}
  <div class="login-container">
     
     <h2>Admin Login</h2>
