@@ -3,12 +3,16 @@ from extensions import mail
 
 
 def send_mail(subject, to_email, body):
-    msg = Message(
-        subject=subject,
-        recipients=[to_email],
-        body=body
-    )
-    mail.send(msg)
+    try:
+        msg = Message(
+            subject=subject,
+            recipients=[to_email],
+            body=body
+        )
+        mail.send(msg)
+        print("MAIL SENT SUCCESSFULLY")
+    except Exception as e:
+        print("MAIL FAILED:", e)
 
 def send_emp_mail(to_email, username, password):
     body = f"""
