@@ -55,7 +55,7 @@ def employee_login():
 
         if employee and check_password_hash(employee.password, password):
             session["employee_id"] = employee.id
-            tasks = Task.query.filter_by(employee_id=employee.id).all()
+            tasks = Task.query.filter_by(employee_id=employee.id,status="Pending").all()
             return render_template("employee_dashboard.html", employee=employee, tasks=tasks)
 
         return render_template("employee_login.html", error="Invalid credentials")
