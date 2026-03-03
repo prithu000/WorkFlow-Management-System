@@ -1,19 +1,20 @@
 from flask_mail import Message
 from extensions import mail
 
-
 def send_mail(subject, to_email, body):
-    try:
-        msg = Message(
-            subject=subject,
-            recipients=[to_email],
-            body=body
-        )
-        mail.send(msg)
-        print("MAIL SENT SUCCESSFULLY")
-    except Exception as e:
-        print("MAIL FAILED:", e)
+    print("===== MAIL DEBUG START =====")
+    print("Subject:", subject)
+    print("To:", to_email)
 
+    msg = Message(
+        subject=subject,
+        recipients=[to_email],
+        body=body
+    )
+
+    mail.send(msg)
+
+    print("===== MAIL DEBUG END =====")
 def send_emp_mail(to_email, username, password):
     body = f"""
 Hello {username},
