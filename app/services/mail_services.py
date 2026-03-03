@@ -1,20 +1,24 @@
-from flask_mail import Message
-from extensions import mail
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
+SENDGRID_API_KEY = os.environ.get("MAIL_PASSWORD")
+FROM_EMAIL = "rahul.business940@gmai.com"
 
 def send_mail(subject, to_email, body):
-    print("===== MAIL DEBUG START =====")
-    print("Subject:", subject)
-    print("To:", to_email)
-
-    msg = Message(
+    message = Mail(
+        from_email=FROM_EMAIL,
+        to_emails=to_email,
         subject=subject,
-        recipients=[to_email],
-        body=body
+        plain_text_content=body
     )
 
-    mail.send(msg)
-
-    print("===== MAIL DEBUG END =====")
+    try:
+        sg = SendGridAPIClient(SENDGRID_API_KEY)
+        response = sg.send(message)
+        print("Email sent:", response.status_code)
+    except Exception as e:
+        print("SendGrid error:", str(e))
 def send_emp_mail(to_email, username, password):
     body = f"""
 Hello {username},
