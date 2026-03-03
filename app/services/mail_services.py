@@ -1,11 +1,13 @@
 from flask_mail import Message
 from extensions import mail
 
-SENDER = "keertipillai49@gmail.com"
 
 def send_mail(subject, to_email, body):
-    msg = Message(subject=subject, sender=SENDER, recipients=[to_email])
-    msg.body = body
+    msg = Message(
+        subject=subject,
+        recipients=[to_email],
+        body=body
+    )
     mail.send(msg)
 
 def send_emp_mail(to_email, username, password):
